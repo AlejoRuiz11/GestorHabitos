@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://getbootstrap.com/docs/5.3/examples/carousel/carousel.css" rel="stylesheet">
+
+
+</head>
+<body>
+    <header data-bs-theme="dark">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Gestor de Habitos</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tareasDeHoy">Tareas de hoy</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#informacion">Claves del Progreso</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#custom-cards">Ventajas</a>
+                </li>
+                
+            </ul>
+        </div>
+        
+        </div>
+      </nav>
+    </header>
+
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class="active" aria-current="true"></button>
+          <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item">
+            <img src="/images/arrows.jpg" class="d-block w-100">
+            <div class="container">
+              <div class="carousel-caption text-start carouselTexto">
+                <h1>Alcanzando Metas</h1>
+                <p class="opacity-75">Conviértete en la mejor versión de ti mismo estableciendo y cumpliendo objetivos concretos. El éxito está en los detalles</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item active">
+            <img src="/images/escalar.jpg" class="d-block w-100">
+            <div class="container">
+              <div class="carousel-caption text-start carouselTexto">
+                <h1 >Bienvenido a Tu Nueva Rutina</h1>
+                <p>Descubre cómo pequeños cambios diarios pueden generar grandes resultados. Empieza hoy a construir el futuro que deseas.</p>
+                
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="/images/escalar1.jpg" class="d-block w-100" style="width: 100%;">
+            <div class="container">
+              <div class="carousel-caption text-end">
+                <h1>Monitorea Tu Progreso</h1>
+                <p>Rastrea tus hábitos y mira tu progreso a lo largo del tiempo</p>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container" id="tareasDeHoy">
+      
+      <div class = "row align-items-start" >
+
+        <div class = "col-11 col-sm-12 col-xl-4 my-2 mx-3 mx-sm-0 mx-xl-3 pt-3 seccionInfo">
+          <div class = "mb-5 mt-2">
+            <h1 class="mb-4 mt-3" style="text-align: center; color: white;">¡Tareas de hoy!</h1>
+          </div>
+
+          <div class="d-flex justify-content-between mb-3">
+              <button class="btn btn-secondary btnNormal grow" id="prevDay">Día anterior</button>
+              <span id="currentDate" style="color: white; text-align: center;"></span>
+              <button class="btn btn-secondary btnNormal grow" id="nextDay">Día siguiente</button>
+          </div>
+          <!--Lista habitos-->
+          <ul class="list-group mt-4" id="habitList"></ul>
+
+        
+          <!-- Sección añadir habito-->
+          <form id="habitForm">
+              <div class="form-group mt-4">
+                  <input type="text" class="form-control" id="habitInput"style="background-color: rgb(228, 228, 228);" placeholder="Añadir nuevo habito">
+              </div>
+              <div class ="d-flex justify-content-center mt-3">
+                  <button type="submit" class="btn btnNormal btn-primary grow mx-2" id="addHabitBtn">Añadir hábito para el ____</button>
+                  <button type="button" class="btn btnNormal btn-primary grow mx-2" id="addAllDaysBtn">Añadir hábito para todos los días</button>
+              </div>
+          </form>
+        </div>
+
+        <div class = "col-11 col-sm-12 col-xl-7 my-2 mx-3 mx-sm-0 mx-xl-4 pt-3 seccionInfo">
+              <!--Eje x la grafica-->
+            <div class = "mb-3 mt-2">
+              <h1 class="mb-4 mt-3" style="text-align: center; color: white;">Grafico de tu progreso</h1>
+            </div>
+
+            <div class = row>
+
+              <div class="col-8 my-2">
+                <label for="timeRange" style="color: rgb(255, 255, 255);">Ver por: </label>
+                <select id="timeRange" class="form-control" style="color: rgb(228, 228, 228); border-color: rgb(75, 192, 192); background-color: rgb(53, 58, 59);  width: auto; display: inline-block;">
+                    <option value="days">Días</option>
+                    <option value="weeks">Semanas</option>
+                    <option value="months">Meses</option>
+                </select>
+              </div>
+              
+              <div class ="col-12 col-sm-3 d-flex justify-content-center">
+                <div class="btn grow"> 
+                  <button id="prevWeek" class="btn btnAntDes btn-primary grow">Anterior</button> 
+                </div> 
+
+                <div class="btn grow"> 
+                  <button id="nextWeek" class="btn btnAntDes btn-primary grow">Siguiente</button> 
+                </div>
+              </div>
+
+            </div>
+
+            <!-- grafica-->
+            <canvas id="habitChart" width="400" height="200"></canvas>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="container py-4" id="informacion">
+      <h2 class="pb-2 border-bottom my-5"></h2>
+
+      <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">El Poder de los Hábitos</h1>
+          <p class="col-md-8 fs-4">Implementar hábitos diarios facilita transformar grandes metas en acciones concretas. Su práctica consistente puede producir cambios significativos en diversas áreas de nuestra vida.</p>
+          
+        </div>
+      </div>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-100 p-5 rounded-3" style="background-color: rgb(44, 48, 49); color: white;">
+            <h2>Seguimiento Diario</h2>
+            <p>Monitorear hábitos a diario nos ayuda a mantener el foco y la motivación. La evaluación continua garantiza que estamos en el camino adecuado hacia nuestras metas.</p>
+            
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+            <h2>Visualización del Progreso</h2>
+            <p>Llevar un registro visual del progreso de nuestros hábitos brinda una sensación de logro. Ver resultados tangibles nos impulsa a seguir adelante con mayor determinación.</p>
+            
+          </div>
+        </div>
+      </div>
+  
+
+
+    </div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+      <h2 class="pb-2 border-bottom"></h2>
+      <h1 class="text-center mt-5" style="color: white; font-size: 60px;">Ventajas</h1>
+      
+      <div class="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-5">
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('/images/vida.jpg'); background-size: cover; background-position: center;">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Mejora tu calidad de vida</h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img src="images/diana.png" width="32" height="32">
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                  <small>Earth</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                  <small>3d</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('/images/dardos.jpg'); background-size: cover; display: block;background-position: center;">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Mantén el enfoque constante</h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img src="images/diana.png" width="32" height="32">
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                  <small>Pakistan</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                  <small>4d</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col">
+          <div class="card card-cover h-100 overflow-hidden text-bg-dark rounded-4 shadow-lg" style="background-image: url('/images/objetivo.jpg'); background-size: cover; background-position: center;">
+            <div class="d-flex flex-column h-100 p-5 pb-3 text-shadow-1">
+              <h3 class="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Alcanza tus metas fácilmente</h3>
+              <ul class="d-flex list-unstyled mt-auto">
+                <li class="me-auto">
+                  <img src="images/diana.png" width="32" height="32">
+                </li>
+                <li class="d-flex align-items-center me-3">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#geo-fill"/></svg>
+                  <small>California</small>
+                </li>
+                <li class="d-flex align-items-center">
+                  <svg class="bi me-2" width="1em" height="1em"><use xlink:href="#calendar3"/></svg>
+                  <small>5d</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--Footer-->
+    <footer class="d-flex flex-wrap justify-content-between align-items-center pt-3 mt-4 border-top">
+      <p class="col-md-4 mb-0 mx-3 text-center" style="color: rgb(255, 255, 255);"> © 2024 Alejandro Ruiz</p>
+    
+
+      <ul class="nav col-md-4 justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="color: rgb(255, 255, 255);">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#tareasDeHoy" style="color: rgb(255, 255, 255);">Tareas de hoy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#informacion" style="color: rgb(255, 255, 255);">Claves del Progreso</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#custom-cards" style="color: rgb(255, 255, 255);">Ventajas</a>
+        </li>
+        
+      </ul>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+
+</body>
+</html>
