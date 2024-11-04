@@ -147,6 +147,7 @@ habitList.addEventListener('click', function(event) {
 habitList.addEventListener('click', function(event) {
     if (event.target.closest('.delete')) {
         removeHabitFromCurrentOnward(event.target.closest('li'));
+        updateHabitChart();
     } else if (event.target.closest('.complete')) {
         const habitElement = event.target.closest('li');
         habitElement.querySelector('span').classList.toggle('completed');
@@ -235,21 +236,27 @@ function getCurrentDayOfWeek() {
 ////////////////////////////////////////////
 
 document.getElementById('prevWeek').addEventListener('click', function() {
+
     if(auxMonthChart)
     {
         currentWeekOffset = currentWeekOffset - 3;
     }
     currentWeekOffset--;
+
     updateHabitChart();
+
 });
 
 document.getElementById('nextWeek').addEventListener('click', function() {
+
     if(auxMonthChart)
     {
         currentWeekOffset = currentWeekOffset + 3;
     }
     currentWeekOffset++;
+    
     updateHabitChart();
+
 });
 
 
