@@ -60,17 +60,22 @@ function addHabitForAllDays(habit) {
     finishDateString.setFullYear(finishDateString.getFullYear() + 2); // Añadir 2 años por defecto
     finishDateString = finishDateString.toDateString();
 
+
+
+    const id = new Date().toISOString();
+
     for (let i = currentDayIndex; i < daysOfWeek.length; i++) {
         let habits = JSON.parse(localStorage.getItem(daysOfWeek[i])) || [];
-        habits.push({ id: new Date().toISOString(), habit, completedDates: [], startDate: currentDate.toDateString(), finishDate: finishDateString });
+        habits.push({ id: id, habit, completedDates: [], startDate: currentDate.toDateString(), finishDate: finishDateString });
         localStorage.setItem(daysOfWeek[i], JSON.stringify(habits));
     }
 
     for (let i = 0; i < currentDayIndex; i++) {
         let habits = JSON.parse(localStorage.getItem(daysOfWeek[i])) || [];
-        habits.push({ id: new Date().toISOString(), habit, completedDates: [], startDate: currentDate.toDateString(), finishDate: finishDateString });
+        habits.push({ id: id, habit, completedDates: [], startDate: currentDate.toDateString(), finishDate: finishDateString });
         localStorage.setItem(daysOfWeek[i], JSON.stringify(habits));
     }
+
 
     loadHabits();
 }
@@ -157,23 +162,29 @@ habitList.addEventListener('click', function(event) {
     }
 });
 
-
 function removeHabitFromCurrentOnward(item) {
     const currentDayIndex = currentDate.getDay();
     const daysOfWeek = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
 
     // Ajustar la finishDate del hábito para que sea la fecha actual
-    for (let i = currentDayIndex; i < daysOfWeek.length; i++) {
+    for (let i = 0; i < daysOfWeek.length; i++) {
         let habits = JSON.parse(localStorage.getItem(daysOfWeek[i])) || [];
+        console.log(i);
+        //console.log(currentDate.toDateString());
         habits.forEach(habit => {
-            if (habit.id === item.dataset.id) {
+            
+            console.log(habit.id + " DatasetID: " + item.dataset.id);
+            if (habit.id == item.dataset.id) {
                 habit.finishDate = currentDate.toDateString();
                 //totalHabitsByDay[currentDate]--;
+                console.log("si");
+                //console.log(currentDate.toDateString());
             }
         });
+        
         localStorage.setItem(daysOfWeek[i], JSON.stringify(habits));
     }
-
+/*
     // Ajustar la finishDate para los días de la semana siguientes
     for (let i = 0; i < currentDayIndex; i++) {
         let habits = JSON.parse(localStorage.getItem(daysOfWeek[i])) || [];
@@ -183,7 +194,7 @@ function removeHabitFromCurrentOnward(item) {
             }
         });
         localStorage.setItem(daysOfWeek[i], JSON.stringify(habits));
-    }
+    }*/
 
     loadHabits();
 }
