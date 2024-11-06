@@ -86,11 +86,6 @@ body{
     border-color: rgb(75, 192, 192);
 }
 
-.seccionInfo{
-    border-radius: 15px;
-    background-color: rgb(44, 48, 49);
-    padding: 20px;
-}
 
 .seccionInfo {
     display: flex;
