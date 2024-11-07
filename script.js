@@ -51,6 +51,7 @@ function addHabitForDay(habit) {
     habits.push({ id: new Date().toISOString(), habit, completedDates: [], startDate: currentDateString, finishDate: finishDateString });
     localStorage.setItem(dayOfWeek, JSON.stringify(habits));
     loadHabits();
+    updateHabitChart();
 }
 
 function addHabitForAllDays(habit) {
@@ -78,6 +79,7 @@ function addHabitForAllDays(habit) {
 
 
     loadHabits();
+    updateHabitChart();
 }
 
 function loadHabits() {
